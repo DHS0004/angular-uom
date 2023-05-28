@@ -26,55 +26,7 @@
             <td>{{ product.quantity }}</td>
             <td>{{ product.unitPrice }}</td>
             <td>
-              <p *ngIf="product.quantity < = 50">Lower Inventory Level</p>
-              <p *ngIf="product.quantity > 50">Sufficient Inventory Level</p>
-            </td>
-            <td>
-              <i class="fa fa-eye icon"></i>
-              <i class="fa fa-pencil-square-o icon"></i>
-            </td>
-          </tr>
-          <tr *ngFor="let product of products">
-            <th scope="row">{{ product.productId }}</th>
-            <td>{{ product.productName }}</td>
-            <td>{{ product.productDescription }}</td>
-            <td>{{ product.createdDate }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.unitPrice }}</td>
-            <td>
-              <p *ngIf="product.quantity < = 50">Lower Inventory Level</p>
-              <p *ngIf="product.quantity > 50">Sufficient Inventory Level</p>
-            </td>
-            <td>
-              <i class="fa fa-eye icon"></i>
-              <i class="fa fa-pencil-square-o icon"></i>
-            </td>
-          </tr>
-          <tr *ngFor="let product of products">
-            <th scope="row">{{ product.productId }}</th>
-            <td>{{ product.productName }}</td>
-            <td>{{ product.productDescription }}</td>
-            <td>{{ product.createdDate }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.unitPrice }}</td>
-            <td>
-              <p *ngIf="product.quantity < = 50">Lower Inventory Level</p>
-              <p *ngIf="product.quantity > 50">Sufficient Inventory Level</p>
-            </td>
-            <td>
-              <i class="fa fa-eye icon"></i>
-              <i class="fa fa-pencil-square-o icon"></i>
-            </td>
-          </tr>
-          <tr *ngFor="let product of products">
-            <th scope="row">{{ product.productId }}</th>
-            <td>{{ product.productName }}</td>
-            <td>{{ product.productDescription }}</td>
-            <td>{{ product.createdDate }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.unitPrice }}</td>
-            <td>
-              <p *ngIf="product.quantity < = 50">Lower Inventory Level</p>
+              <p *ngIf="product.quantity <= 50">Lower Inventory Level</p>
               <p *ngIf="product.quantity > 50">Sufficient Inventory Level</p>
             </td>
             <td>
