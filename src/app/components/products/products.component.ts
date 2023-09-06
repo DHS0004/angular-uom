@@ -1,48 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Product } from '../../Models/product.model';
+import { ProductService } from '../../Services/product.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  //interpolation: ['?', '?'],
 })
 export class ProductsComponent implements OnInit {
-  constructor() {}
+  public rowIndex!: number;
+  showAddProduct!: boolean;
+  isLoading: boolean = false;
+  showEditProduct!: boolean;
+  selectedProduct!: Product;
+  message!: string;
+  public products: Product[] = [];
+  constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getProducts();
+  }
 
-  public products = [
-    {
-      productId: '001',
-      productName: 'White Basmathi Rice',
-      createdDate: 'Jan 29, 2020',
-      unitPrice: 'Rs. 400',
-      quantity: 100,
-      productDescription: 'White Basmathi rice imported from Pakistan',
-    },
-    {
-      productId: '002',
-      productName: 'Flour',
-      createdDate: 'Jan 29, 2020',
-      unitPrice: 'Rs. 190',
-      quantity: 50,
-      productDescription: 'Super Fine whole grain general Purpose flour',
-    },
-    {
-      productId: '003',
-      productName: 'Sugar',
-      createdDate: 'Jan 29, 2020',
-      unitPrice: 'Rs. 200',
-      quantity: 1200,
-      productDescription: 'White sugar manufactured by Palwatte Factory',
-    },
-    {
-      productId: '004',
-      productName: 'Dahl',
-      createdDate: 'Jan 29, 2020',
-      unitPrice: 'Rs. 200',
-      quantity: 10,
-      productDescription: 'Imported mysoor dahl from India',
-    },
-  ];
+  public selectProduct(selectedRow: any, product: Product) {
+    this.rowIndex = selectedRow;
+    this.selectedProduct = product;
+  }
+
+  showAddProducts() {
+    if (this.showEditProduct) {
+      this.showEditProduct = false;
+    }
+    this.showAddProduct = true;
+  }
+
+  hideAddProducts() {
+    this.showAddProduct = false;
+  }
+
+  refresh() {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.isLoading = true;
+    this.productService.getProducts().subscribe((res) => {
+      this.products = res.data;
+      this.isLoading = false;
+    });
+  }
+
+  OpenEditProductView() {
+    if (this.showAddProduct) {
+      this.showAddProduct = false;
+    }
+    this.showEditProduct = true;
+  }
+
+  closeEditView() {
+    this.showEditProduct = false;
+  }
+
+  updateProductList() {
+    this.getProducts();
+  }
+}
+function ViewProductComponent(ViewProductComponent: any) {
+  throw new Error('Function not implemented.');
 }

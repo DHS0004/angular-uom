@@ -1,7 +1,7 @@
 .color{
-    background-color: red;
+    background-color: rgb(78, 136, 78);
 }
 
 .bg-primary{
     background-color: cornflowerblue !important;
-}
+} 
